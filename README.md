@@ -2,7 +2,7 @@
  
 ---
 
-Este repositorio corresponde al Exámen de la asignatura de Programación.
+Este repositorio corresponde al **Exámen de la asignatura de Programación**.
 
 El link para el repositorio es el siguiente: [Examen](https://github.com/mat0ta/examen/)
 
