@@ -15,35 +15,19 @@ class minion_game():
             return True
         else:
             return False
-    # def stuart(self):
-    #     start = 0
-    #     while True:
-    #         if self.string_1.upper() == self.string:
-    #             return self.puntuacion_1
-    #         else:
-    #             num = int(random.randint(0, len(self.string_1)))
-    #             if not m.checkLetra(self.string[start:(num+1)]):
-    #                 self.string_1 = self.string[start:(num+1)]
-    #                 if self.string_1 not in self.strings_1:
-    #                     self.string_1 = self.string[start:(num+1)]
-    #                     self.strings_1.append(self.string_1)
-    #                     self.puntuacion_1 += self.string.count(self.string_1)
-    #                     print(self.string.count(self.string_1), self.string_1, self.puntuacion_1)
     def stuart(self):
         start = 0
-        end = 1
         while True:
-            if not m.checkLetra(self.string[start:end]):
-                print(self.string[start:end])
-                end += 1
-                print(end, len(self.string))
-                if end > len(self.string):
-                    print('Doin this')
-                    end += 1
-                    start += 1
-                else:
-                    print('Doin that')
-                    return
+            num = int(random.randint(0, len(self.string_1)))
+            if not m.checkLetra(self.string[start:(num+1)]):
+                self.string_1 = self.string[start:(num+1)]
+                if self.string_1 not in self.strings_1:
+                    self.string_1 = self.string[start:(num+1)]
+                    self.strings_1.append(self.string_1)
+                    self.puntuacion_1 += self.string.count(self.string_1)
+                    print(self.string.count(self.string_1), self.string_1, self.puntuacion_1)
+            if self.string_1.upper() == self.string:
+                start += 2
 
 
 m = minion_game()
