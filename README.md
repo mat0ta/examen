@@ -4,9 +4,9 @@
 
 Este repositorio corresponde al **Exámen de la asignatura de Programación**.
 
-El link para el repositorio es el siguiente: [Examen](https://github.com/mat0ta/examen/)
+- El link para el repositorio es el siguiente: [Examen](https://github.com/mat0ta/examen/)
 
-El link de mi perfil de GitHub es el siguiente: [mat0ta](https://github.com/mat0ta/)
+- El link de mi perfil de GitHub es el siguiente: [mat0ta](https://github.com/mat0ta/)
 
 ---
 
