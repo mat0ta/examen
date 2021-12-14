@@ -27,14 +27,40 @@ class minion_game():
                     if self.string_1 != '':
                         self.puntuacion_1 += self.string.count(self.string_1)
                     print(self.string.count(self.string_1), self.string_1, self.puntuacion_1)
+                    if self.puntuacion_1 == 12:
+                        print(m.kevin())
+                        return print('Stuard ha conseguido ' + str(self.puntuacion_1) + ' puntos.')
             num += 1
             if self.string_1.upper() == self.string:
                 start += 1
                 while m.checkLetra(self.string[start:]):
                     start += 1
-                    print('Doner')
-                print('Done', start)
                 num = start
+    
+    def kevin(self):
+        start2 = 1
+        num2 = 2
+        while True:
+            if m.checkLetra(self.string[start2:num2]):
+                self.string_2 = self.string[start2:num2]
+                if self.string_2 not in self.strings_1:
+                    self.string_2 = self.string[start2:num2]
+                    self.strings_2.append(self.string_1)
+                    if self.string_2 != '':
+                        self.puntuacion_2 += self.string.count(self.string_2)
+                    print(self.string.count(self.string_2), self.string_2, self.puntuacion_2)
+                    if self.puntuacion_2 == 9:
+                        if self.puntuacion_1 > self.puntuacion_2:
+                            print('¡El ganador es Stuard!')
+                        else:
+                            print('¡El ganador es Kevin!')
+                        return print('Kevin ha conseguido ' + str(self.puntuacion_2) + ' puntos.')
+            num2 += 1
+            if self.string_2.upper() == self.string:
+                start2 += 1
+                while not m.checkLetra(self.string[start2:]):
+                    start2 += 1
+                num2 = start2
 
 
 m = minion_game()
