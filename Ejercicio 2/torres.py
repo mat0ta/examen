@@ -23,18 +23,18 @@ class JuegoTorres():
            while True:
             x = random.randint(0, 2)
             y = random.randint(0, 2)
-            while fichas_1 < 3 and self.asignacion == 0:
+            while self.torres1 < 3 and self.asignacion == 0:
                 if self.cuadros[x][y] == ' ':
                     self.cuadros[x][y] = '♜'
-                    fichas_1 = fichas_1 + 1
+                    self.torres1 = self.torres1 + 1
                 elif self.cuadros[x][y] == '♜':
                     x = random.randint(0, 2)
                     y = random.randint(0, 2)
             self.asignacion = 1
-            while fichas_2 < 3 and self.asignacion == 1:
+            while self.torres2 < 3 and self.asignacion == 1:
                 if self.cuadros[x][y] == ' ':
                     self.cuadros[x][y] = '♖'
-                    fichas_2 = fichas_2 + 1
+                    self.torres2 = self.torres2 + 1
                 elif self.cuadros[x][y] == '♖' or self.cuadros[x][y] == '♜':
                     x = random.randint(0, 2)
                     y = random.randint(0, 2)
@@ -45,7 +45,6 @@ class JuegoTorres():
                 for y in range(0, 3):
                     global moved
                     moved = False
-                    print(x, y)
                     if self.cuadros[x][y] == '♜':
                         global xtemp
                         xtemp = x
@@ -67,10 +66,62 @@ class JuegoTorres():
                                 print('Ficha movida de ' + str(x) + ',' +
                                     str(y) + ' a ' + str(xtemp) + ',' + str(y))
                                 self.movimientos_1 += 1
-                                j.printearTablero()
+                                j.printearCuadros()
                                 time.sleep(2)
                                 break
             return self.movimientos_1
 
+    def jugador2(self):
+            for x in range(0, 3):
+                for y in range(0, 3):
+                    global moved
+                    moved = False
+                    if self.cuadros[x][y] == '♖':
+                        global xtemp
+                        xtemp = x
+                        xtemp = xtemp + 1
+                        if xtemp < 3 and xtemp > -1 and self.cuadros[xtemp][y] == ' ':
+                            self.cuadros[xtemp][y] = '♖'
+                            self.cuadros[x][y] = ' '
+                            print('Ficha movida de ' + str(x) + ',' +
+                                str(y) + ' a ' + str(xtemp) + ',' + str(y))
+                            self.movimientos_2 += 1
+                            j.printearCuadros()
+                            time.sleep(2)
+                            break
+                        else:
+                            xtemp = x - 1
+                            if xtemp < 3 and xtemp > -1 and self.cuadros[xtemp][y] == ' ':
+                                self.cuadros[xtemp][y] = '♖'
+                                self.cuadros[x][y] = ' '
+                                print('Ficha movida de ' + str(x) + ',' +
+                                    str(y) + ' a ' + str(xtemp) + ',' + str(y))
+                                self.movimientos_2 += 1
+                                j.printearCuadros()
+                                time.sleep(2)
+                                break
+            return self.movimientos_2
+
 
 j = JuegoTorres()
+j.crearCuadros()
+j.crearFichas()
+j.printearCuadros()
+moves = 0
+empieza = random.randint(0, 1)
+if empieza == 0:
+    print('Empieza el jugador 1')
+    while j.jugador1() > 0 and j.jugador2() > 0 and moves < 10:
+        j.jugador1()
+        time.sleep(1)
+        j.jugador2()
+        time.sleep(1)
+        moves += 1
+else:
+    print('Empieza el jugador 2')
+    while j.jugador1() > 0 and j.jugador2() > 0 and moves < 10:
+        j.jugador2()
+        time.sleep(2)
+        j.jugador1()
+        time.sleep(2)
+        moves += 1
