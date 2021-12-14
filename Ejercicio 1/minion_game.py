@@ -35,10 +35,13 @@ class minion_game():
         while True:
             if not m.checkLetra(self.string[start:end]):
                 print(self.string[start:end])
-                if end <= len(self.string):
+                if end < len(self.string):
                     end += 1
                 else:
-                    return
+                    start += 1
+            else:
+                return
+
 
 m = minion_game()
 print(m.stuart())
