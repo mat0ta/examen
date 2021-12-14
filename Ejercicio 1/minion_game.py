@@ -35,12 +35,15 @@ class minion_game():
         while True:
             if not m.checkLetra(self.string[start:end]):
                 print(self.string[start:end])
-                if end < len(self.string):
+                end += 1
+                print(end, len(self.string))
+                if end > len(self.string):
+                    print('Doin this')
                     end += 1
-                else:
                     start += 1
-            else:
-                return
+                else:
+                    print('Doin that')
+                    return
 
 
 m = minion_game()
